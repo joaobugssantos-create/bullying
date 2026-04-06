@@ -277,6 +277,7 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             justify-content: center;
+            margin-bottom: 3rem;
         }
 
         .help-item {
@@ -292,6 +293,40 @@
 
         .help-icon {
             font-size: 2rem;
+        }
+
+        /* Estilo para o vídeo */
+        .video-container {
+            background: linear-gradient(135deg, #2c3e66 0%, #1a2a4a 100%);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .video-container h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Formulário de denúncia anônima */
@@ -401,6 +436,12 @@
             .hero-image {
                 margin: 1rem auto;
                 border-radius: 20px;
+            }
+            .video-container {
+                padding: 1rem;
+            }
+            .video-container h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -516,8 +557,30 @@
                     <div class="help-item"><span class="help-icon">🛡️</span> Guarde provas (prints, áudios)</div>
                     <div class="help-item"><span class="help-icon">❤️</span> Ofereça acolhimento</div>
                 </div>
-                <div style="background-color: #e8f0fe; border-radius: 28px; padding: 1.5rem; margin-top: 2rem; text-align: center;">
+                
+                <!-- Bloco de canais de apoio original -->
+                <div style="background-color: #e8f0fe; border-radius: 28px; padding: 1.5rem; text-align: center; margin-bottom: 2rem;">
                     <p style="font-weight: bold;">📍 Canais oficiais de apoio: Disque 100 (Direitos Humanos) | Centro de Valorização da Vida (CVV) 188 | SaferNet para denúncias online</p>
+                </div>
+
+                <!-- VÍDEO DO YOUTUBE ADICIONADO AQUI (conforme solicitado) -->
+                <div class="video-container">
+                    <h3>📺 Assista e compartilhe: Campanha contra o Bullying</h3>
+                    <div class="video-wrapper">
+                        <iframe 
+                            width="560" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/r7xsLuAPdVo?si=ynZ-1FzQjT3WqRC_" 
+                            title="Vídeo da campanha contra o bullying - YouTube" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p style="color: #ecf0f1; margin-top: 1.5rem; font-size: 0.95rem;">
+                        🎯 Compartilhe este vídeo e ajude a conscientizar mais pessoas. Informação é a melhor ferramenta contra o bullying!
+                    </p>
                 </div>
             </div>
         </section>
@@ -640,7 +703,7 @@
         }, { threshold: 0.5 });
         if (statsSection) observer.observe(statsSection);
         
-        console.log("💙 Campanha Força na Rede - Site com imagem personalizada na seção hero.");
+        console.log("💙 Campanha Força na Rede - Site com imagem e vídeo do YouTube integrados!");
     </script>
 </body>
 </html>
