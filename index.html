@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Força na Rede - Campanha contra Bullying e Ciberbullying</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f9fbfd;
+            color: #1e2a3e;
+            scroll-behavior: smooth;
+        }
+
+        /* Paleta de cores */
+        :root {
+            --primary: #2c3e66;
+            --primary-light: #3a5795;
+            --secondary: #e67e22;
+            --secondary-light: #f39c12;
+            --accent: #e74c3c;
+            --accent-dark: #c0392b;
+            --light-bg: #ecf0f1;
+            --white: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Cabeçalho / Navegação */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--secondary-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-light);
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #1e2f4e 0%, #132235 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Imagem dentro do hero */
+        .hero-image {
+            margin: 1.5rem auto 2rem;
+            max-width: 900px;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: var(--secondary-light);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary-light);
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Containers gerais */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 1.8rem;
+            flex: 1 1 280px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card i {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Estatísticas */
+        .stats {
+            background: var(--light-bg);
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: white;
+            border-radius: 50%;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: 0.2s;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* depoimentos / relatos */
+        .depoimentos {
+            background: linear-gradient(to right, #fef9e4, #fff4e6);
+        }
+
+        .depoimento-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            margin: 1rem;
+            flex: 1 1 300px;
+            box-shadow: var(--shadow);
+            border-left: 8px solid var(--secondary);
+            font-style: italic;
+        }
+
+        .depoimento-card p {
+            margin-bottom: 1rem;
+        }
+
+        .autor {
+            font-weight: bold;
+            color: var(--primary);
+            text-align: right;
+        }
+
+        /* Como ajudar */
+        .help-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .help-item {
+            background: white;
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--shadow);
+            font-weight: 500;
+        }
+
+        .help-icon {
+            font-size: 2rem;
+        }
+
+        /* Formulário de denúncia anônima */
+        .form-section {
+            background: var(--primary);
+            color: white;
+        }
+
+        .form-section h2 {
+            color: white;
+        }
+
+        .form-section h2::after {
+            background: var(--secondary-light);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(2px);
+            padding: 2rem;
+            border-radius: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 60px;
+            font-family: inherit;
+            background: white;
+            outline: none;
+        }
+
+        textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+
+        button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            background: var(--secondary-light);
+            transform: scale(0.98);
+        }
+
+        .feedback-msg {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1a2b;
+            color: #ccc;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .stats-grid {
+                justify-content: center;
+            }
+            .stat-item {
+                width: 140px;
+                height: 140px;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .hero-image {
+                margin: 1rem auto;
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🔒 <span>Força na Rede</span></div>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#dados">Dados</a></li>
+                <li><a href="#ajuda">Como Ajudar</a></li>
+                <li><a href="#denuncia">Denuncie</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero section com a imagem solicitada -->
+        <section class="hero">
+            <h1>Juntos contra o Bullying e Ciberbullying</h1>
+            <p>Palavras machucam, mas o respeito e a empatia curam. Seja parte da mudança, denuncie, apoie e compartilhe bondade.</p>
+            
+            <!-- Imagem adicionada conforme sua solicitação -->
+            <div class="hero-image">
+                <img src="https://www.psicologo.com.br/wp-content/uploads/como-lidar-com-o-bullying-na-escola.jpg" 
+                     alt="Campanha contra o bullying na escola - apoio e conscientização"
+                     onerror="this.onerror=null; this.src='https://placehold.co/900x400/2c3e66/white?text=Imagem+Campanha+Bullying';">
+            </div>
+            
+            <div>
+                <a href="#denuncia" class="btn">💬 Fazer Denúncia Anônima</a>
+                <a href="#ajuda" class="btn btn-outline">🤝 Como Ajudar</a>
+            </div>
+        </section>
+
+        <!-- Sobre / O que é -->
+        <section id="sobre">
+            <div class="container">
+                <h2>O que são Bullying e Ciberbullying?</h2>
+                <div class="cards">
+                    <div class="card">
+                        <div>😔</div>
+                        <h3>Bullying</h3>
+                        <p>Comportamento agressivo, intencional e repetido que ocorre sem motivação evidente, causando dor e sofrimento. Pode ser físico, verbal ou psicológico.</p>
+                    </div>
+                    <div class="card">
+                        <div>💻📱</div>
+                        <h3>Ciberbullying</h3>
+                        <p>Uso de tecnologias digitais para intimidar, humilhar ou difamar. Mensagens ofensivas, exposição de dados, exclusão em grupos e boatos online.</p>
+                    </div>
+                    <div class="card">
+                        <div>🧡</div>
+                        <h3>Consequências</h3>
+                        <p>Ansiedade, depressão, queda no rendimento escolar, isolamento e até pensamentos autodestrutivos. A vítima nunca está sozinha, há ajuda disponível.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dados Estatísticos -->
+        <section id="dados" class="stats">
+            <div class="container">
+                <h2>Dados que alertam</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">1 em 5</div>
+                        <div class="stat-label">estudantes já sofreram bullying</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">dos jovens já vivenciaram ciberbullying</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">não denunciam por medo ou vergonha</div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem; font-weight: 500;">Fonte: Pesquisa Nacional de Saúde do Escolar (PeNSE) / UNICEF</p>
+            </div>
+        </section>
+
+        <!-- Depoimentos inspiradores -->
+        <section class="depoimentos">
+            <div class="container">
+                <h2>Histórias de superação</h2>
+                <div class="cards">
+                    <div class="depoimento-card">
+                        <p>"Sofri bullying por anos na escola por causa do meu jeito de me vestir. Me isolei, mas um dia um professor me acolheu. Hoje ajudo outros jovens a encontrar sua voz."</p>
+                        <div class="autor">— Marina, 17 anos</div>
+                    </div>
+                    <div class="depoimento-card">
+                        <p>"Recebi mensagens de ódio anônimas nas redes sociais. Quase desisti de tudo. Busquei ajuda psicológica e denunciei. Apoio familiar me salvou."</p>
+                        <div class="autor">— Lucas, 19 anos</div>
+                    </div>
+                    <div class="depoimento-card">
+                        <p>"Era o alvo das 'brincadeiras' no grupo da sala. Com o apoio de amigos e uma campanha na escola, conseguimos conscientizar. O bullying diminuiu drasticamente."</p>
+                        <div class="autor">— Camila, 16 anos</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como ajudar / Ações -->
+        <section id="ajuda">
+            <div class="container">
+                <h2>Como você pode ajudar</h2>
+                <div class="help-grid">
+                    <div class="help-item"><span class="help-icon">👂</span> Escute sem julgar</div>
+                    <div class="help-item"><span class="help-icon">📢</span> Denuncie anonimamente</div>
+                    <div class="help-item"><span class="help-icon">🧑‍🏫</span> Eduque sobre empatia digital</div>
+                    <div class="help-item"><span class="help-icon">🤝</span> Apoie campanhas escolares</div>
+                    <div class="help-item"><span class="help-icon">🛡️</span> Guarde provas (prints, áudios)</div>
+                    <div class="help-item"><span class="help-icon">❤️</span> Ofereça acolhimento</div>
+                </div>
+                <div style="background-color: #e8f0fe; border-radius: 28px; padding: 1.5rem; margin-top: 2rem; text-align: center;">
+                    <p style="font-weight: bold;">📍 Canais oficiais de apoio: Disque 100 (Direitos Humanos) | Centro de Valorização da Vida (CVV) 188 | SaferNet para denúncias online</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulário de denúncia anônima (campanha) -->
+        <section id="denuncia" class="form-section">
+            <div class="container">
+                <h2>Denuncie anonimamente</h2>
+                <div class="form-container">
+                    <p style="margin-bottom: 1.5rem; text-align: center;">Sua segurança é prioridade. Nenhum dado pessoal será solicitado. Sua mensagem ajuda a mapear e combater o bullying.</p>
+                    <form id="reportForm">
+                        <div class="form-group">
+                            <input type="text" id="nomeOpcional" placeholder="Seu nome (opcional)">
+                        </div>
+                        <div class="form-group">
+                            <select id="tipo" required>
+                                <option value="" disabled selected>Selecione o tipo de violência</option>
+                                <option value="bullying">Bullying escolar</option>
+                                <option value="ciberbullying">Ciberbullying</option>
+                                <option value="ambos">Ambos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="relato" rows="4" placeholder="Descreva o ocorrido de forma anônima (local, data aproximada, como aconteceu...) *" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="emailContato" placeholder="E-mail para retorno (opcional, sigilo garantido)">
+                        </div>
+                        <button type="submit">Enviar denúncia anônima ➔</button>
+                        <div id="formFeedback" class="feedback-msg"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Sobre a campanha</a>
+            <a href="#">Parceiros</a>
+            <a href="#">Política de privacidade</a>
+            <a href="#">Fale conosco</a>
+        </div>
+        <p>💙 Força na Rede - Campanha nacional contra o bullying e ciberbullying | Respeito e empatia transformam realidades.</p>
+        <p style="margin-top: 0.7rem;">&copy; 2025 - Se você está passando por alguma situação, procure ajuda. Você não está sozinho(a).</p>
+    </footer>
+
+    <script>
+        // Formulário de denúncia com feedback
+        const form = document.getElementById('reportForm');
+        const feedbackDiv = document.getElementById('formFeedback');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const tipoSelect = document.getElementById('tipo');
+            const relatoText = document.getElementById('relato').value.trim();
+            
+            if (!tipoSelect.value) {
+                feedbackDiv.innerHTML = '⚠️ Por favor, selecione o tipo de violência.';
+                feedbackDiv.style.color = "#ffd966";
+                return;
+            }
+            if (relatoText === "") {
+                feedbackDiv.innerHTML = '⚠️ Descreva brevemente o ocorrido para que possamos ajudar.';
+                feedbackDiv.style.color = "#ffd966";
+                return;
+            }
+            
+            feedbackDiv.innerHTML = '✅ Denúncia anônima recebida! Sua coragem ajuda a construir um ambiente mais seguro. Em breve, equipes especializadas analisarão o caso. 💙';
+            feedbackDiv.style.color = "#d4ffb0";
+            feedbackDiv.style.fontWeight = "bold";
+            
+            document.getElementById('tipo').value = '';
+            document.getElementById('relato').value = '';
+            
+            setTimeout(() => {
+                feedbackDiv.innerHTML = '';
+            }, 6000);
+        });
+
+        // Smooth scroll para links internos
+        const links = document.querySelectorAll('.nav-links a, .btn[href^="#"], .btn-outline[href^="#"]');
+        for (const link of links) {
+            link.addEventListener('click', function(event) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#' && targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        event.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        }
+
+        // Animação suave nos números estatísticos
+        const statsNumbers = document.querySelectorAll('.stat-number');
+        function animateNumbers() {
+            statsNumbers.forEach(el => {
+                el.style.transition = '0.3s';
+                el.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    el.style.transform = 'scale(1)';
+                }, 300);
+            });
+        }
+        
+        const statsSection = document.querySelector('.stats');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        if (statsSection) observer.observe(statsSection);
+        
+        console.log("💙 Campanha Força na Rede - Site com imagem personalizada na seção hero.");
+    </script>
+</body>
+</html>
